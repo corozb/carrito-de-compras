@@ -1,11 +1,10 @@
 import './App.css'
-import StateApp from './usestate/StateApp'
+import AppRoutes from './routes/AppRoutes'
 
 function App() {
   return (
     <div className='App'>
-      <h1>Carrito de Compras</h1>
-      <StateApp />
+      <AppRoutes />
     </div>
   )
 }
