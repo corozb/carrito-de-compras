@@ -1,11 +1,11 @@
 import './App.css'
-import ReducerApp from './usereducer/ReducerApp'
+import StateApp from './usestate/StateApp'
 
 function App() {
   return (
     <div className='App'>
       <h1>Carrito de Compras</h1>
-      <ReducerApp />
+      <StateApp />
     </div>
   )
 }

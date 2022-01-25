@@ -1,4 +1,4 @@
-# Carrito de Compras usando useReducer
+# Carrito de Compras usando useState
 
 I use this repo to learn about create a shopping Cart using diferents kind of hooks to manage state.
 
