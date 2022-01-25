@@ -1,6 +1,6 @@
-import { TYPES } from '../actions/ShoppingActions'
+import { ADD_TO_CART, CLEAR_CART, REMOVE_ALL_FROM_CART, REMOVE_ONE_FROM_CART } from '../types'
 
-export const shoppingInitialState = {
+export const initialState = {
   products: [
     { id: 1, name: 'Producto 1', price: 100 },
     { id: 2, name: 'Producto 2', price: 200 },
@@ -12,9 +12,9 @@ export const shoppingInitialState = {
   cart: [],
 }
 
-export function shoppingReducer(state, action) {
+export function shoppingReducer(state = initialState, action) {
   switch (action.type) {
-    case TYPES.ADD_TO_CART: {
+    case ADD_TO_CART: {
       const addItem = state.products.find((product) => product.id === action.payload)
 
       const itemInCart = state.cart.find((item) => item.id === addItem.id)
@@ -22,7 +22,7 @@ export function shoppingReducer(state, action) {
       return itemInCart
         ? {
             ...state,
-            cart: state.cart.map((item) => (item.id === addItem.id ? { ...item, quantity: item.quantity++ } : item)),
+            cart: state.cart.map((item) => (item.id === addItem.id ? { ...item, quantity: item.quantity + 1 } : item)),
           }
         : {
             ...state,
@@ -30,7 +30,7 @@ export function shoppingReducer(state, action) {
           }
     }
 
-    case TYPES.REMOVE_ONE_FROM_CART: {
+    case REMOVE_ONE_FROM_CART: {
       const itemDelete = state.cart.find((item) => item.id === action.payload)
 
       return itemDelete.quantity > 1
@@ -40,7 +40,7 @@ export function shoppingReducer(state, action) {
               item.id === action.payload
                 ? {
                     ...item,
-                    quantity: item.quantity--,
+                    quantity: item.quantity - 1,
                   }
                 : item
             ),
@@ -51,7 +51,7 @@ export function shoppingReducer(state, action) {
           }
     }
 
-    case TYPES.REMOVE_ALL_FROM_CART: {
+    case REMOVE_ALL_FROM_CART: {
       const deleteAll = state.cart.filter((item) => item.id !== action.payload)
 
       return {
@@ -60,8 +60,8 @@ export function shoppingReducer(state, action) {
       }
     }
 
-    case TYPES.CLEAR_CART:
-      return shoppingInitialState
+    case CLEAR_CART:
+      return initialState
 
     default:
       return state

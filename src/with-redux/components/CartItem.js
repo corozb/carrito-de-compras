@@ -1,5 +1,5 @@
-const CartItem = ({ data, removeCart }) => {
-  let { id, name, price, quantity } = data
+const CartItem = ({ data, removeOne, removeAll }) => {
+  let { name, price, quantity } = data
 
   return (
     <div style={{ borderBottom: 'thin solid gray' }}>
@@ -7,9 +7,9 @@ const CartItem = ({ data, removeCart }) => {
       <h5>
         ${price}.00 x {quantity} = ${price * quantity}.00
       </h5>
-      <button onClick={() => removeCart(id)}>Eliminar Uno</button>
+      <button onClick={removeOne}>Eliminar Uno</button>
       <br />
-      <button onClick={() => removeCart(id, true)}>Eliminar Todos</button>
+      <button onClick={removeAll}>Eliminar Todos</button>
       <br />
       <br />
     </div>

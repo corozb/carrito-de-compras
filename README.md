@@ -1,7 +1,10 @@
-# Carrito de Compras usando useReducer
+# Carrito de Compras usando Redux
 
-I use this repo to learn about create a shopping Cart using diferents kind of hooks to manage state.
+Steps:
 
-- useState
-- useReduce
-- Redux
+1. create types
+2. create actions
+3. Create reducers
+4. index.js in reducers
+5. store with subscribe
+6. Provider for app

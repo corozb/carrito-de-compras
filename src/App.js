@@ -1,12 +1,16 @@
+import { Provider } from 'react-redux'
 import './App.css'
-import ReducerApp from './usereducer/ReducerApp'
+import ReduxApp from './with-redux/ReduxApp'
+import store from './with-redux/store'
 
 function App() {
   return (
-    <div className='App'>
-      <h1>Carrito de Compras</h1>
-      <ReducerApp />
-    </div>
+    <Provider store={store}>
+      <div className='App'>
+        <h1>Carrito de Compras</h1>
+        <ReduxApp />
+      </div>
+    </Provider>
   )
 }
 
